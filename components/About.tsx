@@ -42,7 +42,7 @@ export default function About() {
               transition={{ delay: 0.2 }}
             >
               <span className="font-display text-sm uppercase tracking-wider text-accent">
-                01 — About
+                About
               </span>
             </motion.div>
           </div>

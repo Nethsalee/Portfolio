@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Education from "@/components/Education";
 import Project from "@/components/Project";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
@@ -13,7 +12,6 @@ export default function Home() {
       <Navigation />
       <Hero />
       <About />
-      <Education />
       <Project />
       <Skills />
       <Contact />

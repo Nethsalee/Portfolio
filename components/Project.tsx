@@ -43,7 +43,6 @@ export default function Project() {
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <motion.div
-          className="max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -58,7 +57,7 @@ export default function Project() {
             transition={{ delay: 0.2 }}
           >
             <span className="font-display text-sm uppercase tracking-wider text-accent">
-              03 — Featured Project
+              Featured Project
             </span>
           </motion.div>
 
