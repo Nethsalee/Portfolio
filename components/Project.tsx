@@ -43,6 +43,7 @@ export default function Project() {
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <motion.div
+          className="max-w-6xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}

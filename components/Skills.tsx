@@ -79,12 +79,12 @@ export default function Skills() {
 
           {/* Skills constellation - asymmetric grid */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-auto">
               {skillCategories.map((category, categoryIndex) => (
                 <motion.div
                   key={category.title}
                   className={`group p-8 bg-gradient-to-br ${category.color} backdrop-blur-sm border ${category.border} rounded-3xl hover:scale-[1.02] transition-all duration-300 ${
-                    categoryIndex === 4 ? "md:col-span-2" : ""
+                    categoryIndex === 3 ? "lg:col-span-2" : ""
                   }`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

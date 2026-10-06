@@ -64,10 +64,10 @@ export default function Hero() {
       />
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Content - Asymmetric layout */}
           <motion.div
-            className="lg:col-span-1"
+            className="lg:col-span-7 lg:col-start-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -173,7 +173,7 @@ export default function Hero() {
 
           {/* Visual element - Abstract geometric shape */}
           <motion.div
-            className="hidden lg:block"
+            className="lg:col-span-4 hidden lg:block"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
