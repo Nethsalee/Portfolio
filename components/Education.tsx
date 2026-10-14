@@ -1,116 +1,179 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Calendar, MapPin, BookOpen, Award, Sparkles } from "lucide-react";
 
-const education = [
+const educationData = [
   {
-    degree: "BSc (Hons) Information Systems",
+    degree: "BSc (Hons) in Information Systems",
     institution: "Faculty of Computing, Sabaragamuwa University of Sri Lanka",
+    location: "Belihuloya, Sri Lanka",
     period: "2024 – Present",
     status: "ongoing",
+    description:
+      "Specializing in enterprise systems analysis, software engineering principles, and technology management. Actively developing technical leadership through agile projects and collaborative academic coursework.",
+    coursework: [
+      "Software Project Management",
+      "Systems Analysis & Design",
+      "Database Management Systems",
+      "Web Technologies & Frameworks",
+      "Object-Oriented Programming",
+      "Agile & Scrum Methodologies",
+    ],
   },
   {
-    degree: "Diploma in Information Technology",
+    degree: "Diploma in Information Technology (DIT)",
     institution: "ESOFT Metro Campus",
+    location: "Kandy, Sri Lanka",
     period: "2023",
     status: "completed",
+    description:
+      "Completed comprehensive foundational diploma covering practical programming fundamentals, database structures, system design basics, and modern web application development.",
+    coursework: [
+      "Programming Fundamentals",
+      "Relational Databases",
+      "Web Development Basics",
+      "IT Systems Architecture",
+    ],
   },
   {
-    degree: "Advanced Level (Physical Science Stream)",
+    degree: "G.C.E. Advanced Level (Physical Science Stream)",
     institution: "Mahamaya Girls' College, Kandy",
+    location: "Kandy, Sri Lanka",
     period: "2022",
     status: "completed",
+    description:
+      "Rigorous physical science stream foundation emphasizing analytical problem-solving, advanced mathematics, physics, and scientific research methodologies.",
+    coursework: ["Combined Mathematics", "Physics", "Chemistry"],
   },
 ];
 
 export default function Education() {
   return (
-    <section id="education" className="py-32 relative">
+    <section id="education" className="py-28 md:py-36 relative">
       <div className="container mx-auto px-6 lg:px-12">
-        <motion.div
-          className="grid lg:grid-cols-12 gap-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Section label */}
-          <div className="lg:col-span-3">
-            <motion.div
-              className="sticky top-32"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="font-display text-sm uppercase tracking-wider text-accent">
-                02 — Education
-              </span>
-            </motion.div>
-          </div>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 mb-3"
+          >
+            <span className="w-8 h-[1px] bg-accent" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent font-semibold">
+              02 — Academic Journey
+            </span>
+          </motion.div>
 
-          {/* Timeline */}
-          <div className="lg:col-span-8">
-            <motion.h2
-              className="font-display text-4xl md:text-5xl font-bold mb-16 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              Academic Journey
-            </motion.h2>
+          <motion.h2
+            className="font-display text-3xl sm:text-5xl font-bold tracking-tight mb-6 leading-[1.15]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            Educational Background &{" "}
+            <span className="bg-gradient-to-r from-accent via-sky-300 to-accent-purple bg-clip-text text-transparent">
+              Qualifications
+            </span>
+          </motion.h2>
 
-            <div className="relative">
-              {/* Vertical line */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/50 to-transparent" />
+          <motion.p
+            className="text-base sm:text-lg text-text-secondary leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            A strong academic foundation bridging scientific discipline, modern software
+            engineering concepts, and modern information systems management.
+          </motion.p>
+        </div>
 
-              <div className="space-y-12">
-                {education.map((item, index) => (
-                  <motion.div
-                    key={item.degree}
-                    className="relative pl-12"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                  >
-                    {/* Timeline dot */}
-                    <motion.div
-                      className="absolute left-0 top-2 w-3 h-3 -translate-x-[5px]"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 + index * 0.1 }}
-                    >
-                      <div className="w-full h-full rounded-full bg-accent ring-4 ring-accent/20" />
-                    </motion.div>
+        {/* Timeline Stack */}
+        <div className="relative max-w-4xl">
+          {/* Vertical Glowing Timeline Line */}
+          <div className="absolute left-4 sm:left-8 top-3 bottom-3 w-[2px] bg-gradient-to-b from-accent via-accent-purple/50 to-transparent opacity-40" />
 
-                    <div className="group">
-                      <div className="flex items-start justify-between mb-2 flex-wrap gap-2">
-                        <div className="flex items-center gap-3">
-                          <GraduationCap className="w-5 h-5 text-accent" />
-                          {item.status === "ongoing" && (
-                            <span className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full border border-accent/20">
-                              In Progress
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-sm text-text-secondary font-mono">{item.period}</span>
-                      </div>
+          <div className="space-y-10">
+            {educationData.map((item, index) => (
+              <motion.div
+                key={item.degree}
+                className="relative pl-12 sm:pl-20 group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                {/* Glowing Node Dot */}
+                <div className="absolute left-4 sm:left-8 top-6 -translate-x-1/2 flex items-center justify-center">
+                  <div className="w-4 h-4 rounded-full bg-slate-950 border-2 border-accent group-hover:border-white shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-colors">
+                    {item.status === "ongoing" && (
+                      <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />
+                    )}
+                  </div>
+                </div>
 
-                      <h3 className="font-display text-2xl font-semibold mb-2 group-hover:text-accent transition-colors duration-200">
-                        {item.degree}
-                      </h3>
-                      <p className="text-text-secondary">{item.institution}</p>
+                {/* Card Container */}
+                <div className="p-6 sm:p-8 rounded-3xl glass-card glass-card-hover border border-white/10 group-hover:border-accent/40 transition-all duration-300">
+                  {/* Top Meta info */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-accent/10 text-accent border border-accent/20 flex items-center gap-1.5">
+                        <Calendar className="w-3 h-3" />
+                        {item.period}
+                      </span>
+                      {item.status === "ongoing" && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          Current Undergraduate
+                        </span>
+                      )}
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+
+                    <div className="flex items-center gap-1.5 text-xs text-text-muted font-mono">
+                      <MapPin className="w-3.5 h-3.5 text-accent" />
+                      <span>{item.location}</span>
+                    </div>
+                  </div>
+
+                  {/* Degree & Institution */}
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1.5 group-hover:text-accent transition-colors">
+                    {item.degree}
+                  </h3>
+                  <div className="flex items-center gap-2 text-sm sm:text-base font-medium text-slate-300 mb-4">
+                    <GraduationCap className="w-4 h-4 text-accent" />
+                    <span>{item.institution}</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-text-secondary leading-relaxed mb-5">
+                    {item.description}
+                  </p>
+
+                  {/* Key Coursework / Modules Chips */}
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-text-muted block mb-2.5 flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 text-accent" />
+                      Key Focus Areas & Modules:
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {item.coursework.map((course) => (
+                        <span
+                          key={course}
+                          className="text-xs px-2.5 py-1 rounded-lg bg-white/[0.03] text-slate-300 border border-white/5 hover:border-accent/30 transition-colors"
+                        >
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
