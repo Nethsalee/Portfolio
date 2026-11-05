@@ -3,21 +3,13 @@
 import { motion } from "framer-motion";
 import {
   Sparkles,
-  ExternalLink,
   Layers,
-  Database,
   CheckCircle2,
-  GitBranch,
   Target,
-  Users,
-  Code2,
-  Calendar,
   Kanban,
-  Cpu,
   ArrowUpRight,
 } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
-import { useState } from "react";
 
 const projects = [
   {
@@ -121,7 +113,6 @@ const projects = [
 ];
 
 export default function Project() {
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
 
   return (
     <section id="project" className="py-28 md:py-36 relative overflow-hidden">

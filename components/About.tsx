@@ -8,7 +8,6 @@ import {
   Workflow,
   Sparkles,
   CheckCircle,
-  FileText,
   Lightbulb,
   GitBranch,
 } from "lucide-react";
@@ -81,7 +80,7 @@ export default function About() {
             </div>
 
             <p className="text-sm text-text-secondary leading-relaxed mb-6">
-              Most project managers don't know what happens behind a Git merge conflict or an API
+              Most project managers don&apos;t know what happens behind a Git merge conflict or an API
               bottleneck. Because I have hands-on experience in full-stack web development and database
               architectures, I provide realistic sprint estimations, eliminate technical ambiguity,
               and facilitate high-trust collaboration.
@@ -185,7 +184,7 @@ export default function About() {
                   Work Ethic & Vision
                 </span>
                 <h4 className="font-display text-xl sm:text-2xl font-bold text-white mb-3">
-                  "Projects succeed when clarity, empathy, and technical rigor move in sync."
+                  &quot;Projects succeed when clarity, empathy, and technical rigor move in sync.&quot;
                 </h4>
                 <p className="text-sm text-text-secondary leading-relaxed">
                   Currently seeking a Project Manager Intern position where I can take ownership of

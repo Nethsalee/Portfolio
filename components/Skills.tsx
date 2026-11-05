@@ -7,18 +7,15 @@ import {
   Globe,
   Database,
   Layers,
-  Sparkles,
   Kanban,
   CheckCircle2,
-  Terminal,
-  Cpu,
   BarChart3,
 } from "lucide-react";
 
 type SkillCategory = {
   id: string;
   name: string;
-  icon: any;
+  icon: import("lucide-react").LucideIcon;
   description: string;
   skills: { name: string; level: string; highlight?: boolean }[];
 };

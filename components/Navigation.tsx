@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Sparkles, Send } from "lucide-react";
+import { Menu, X, ArrowUpRight, Send } from "lucide-react";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -150,7 +150,7 @@ export default function Navigation() {
               className="px-4 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-accent/90 via-sky-500 to-accent-purple/90 hover:from-accent hover:to-accent-purple shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transition-all flex items-center gap-1.5"
             >
               <Send className="w-3 h-3" />
-              <span>Let's Connect</span>
+              <span>Let&apos;s Connect</span>
             </motion.a>
           </div>
 
@@ -167,6 +167,8 @@ export default function Navigation() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-secondary hover:text-white transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls={mobileMenuOpen ? "mobile-navigation" : undefined}
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -177,6 +179,7 @@ export default function Navigation() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
+              id="mobile-navigation"
               initial={{ opacity: 0, y: -10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}

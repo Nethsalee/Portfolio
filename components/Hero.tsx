@@ -6,14 +6,12 @@ import {
   MapPin,
   Phone,
   ArrowRight,
-  Sparkles,
   GitPullRequest,
   CheckCircle2,
   Clock,
   Layers,
   Terminal,
   Kanban,
-  Download,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -119,7 +117,7 @@ export default function Hero() {
 
             {/* Main Headline */}
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[1.08]">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-white block sm:inline">Nethsalee</span>{" "}
               <span className="bg-gradient-to-r from-accent via-sky-300 to-accent-purple bg-clip-text text-transparent">
                 Samarawickrama
@@ -260,13 +258,13 @@ export default function Hero() {
                   <div className="mt-3">
                     <div className="flex justify-between text-xs mb-1.5 font-mono">
                       <span className="text-text-secondary">Sprint Velocity</span>
-                      <span className="text-accent font-semibold">88% (38/42 pts)</span>
+                      <span className="text-accent font-semibold">{((38 / 42) * 100).toFixed(1)}% (38/42 pts)</span>
                     </div>
                     <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full bg-gradient-to-r from-accent to-accent-purple rounded-full"
                         initial={{ width: 0 }}
-                        animate={{ width: "88%" }}
+                        animate={{ width: `${(38 / 42) * 100}%` }}
                         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
                       />
                     </div>

@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUp, Mail, Heart, Sparkles } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/Icons";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

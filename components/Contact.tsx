@@ -10,7 +10,6 @@ import {
   Copy,
   Check,
   Clock,
-  Sparkles,
   MessageSquare,
 } from "lucide-react";
 import { useState, FormEvent } from "react";
@@ -30,31 +29,25 @@ export default function Contact() {
     message: "",
   });
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("");
 
-  const copyToClipboard = (text: string, field: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => {
-      setCopiedField(null);
-    }, 2500);
+  const copyToClipboard = async (text: string, field: string) => {
+    setCopiedField(null);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setCopyStatus(`${field === "email" ? "Email address" : "Phone number"} copied.`);
+    } catch {
+      setCopyStatus("Copy failed. Please select and copy the contact details manually.");
+    }
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     const subject = `[${formData.roleInterest}] Portfolio Inquiry from ${formData.name}`;
-    const body = `${formData.message}%0D%0A%0D%0A--------------------%0D%0ASender Name: ${formData.name}%0D%0ASender Email: ${formData.email}%0D%0AOpportunity Interest: ${formData.roleInterest}`;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSent(true);
-      window.location.href = `mailto:nethsalee@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${body}`;
-    }, 800);
+    const body = `${formData.message}\r\n\r\n--------------------\r\nSender Name: ${formData.name}\r\nSender Email: ${formData.email}\r\nOpportunity Interest: ${formData.roleInterest}`;
+    window.location.href = `mailto:nethsalee@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -88,7 +81,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              Let's Build & Ship{" "}
+              Let&apos;s Build & Ship{" "}
               <span className="bg-gradient-to-r from-accent via-sky-300 to-accent-purple bg-clip-text text-transparent">
                 Something Great
               </span>
@@ -103,7 +96,7 @@ export default function Contact() {
             >
               I am actively seeking Project Manager Intern and Junior Full-Stack opportunities.
               Whether you have an open role, want to collaborate on a system, or just wish to say
-              hello, I'd love to connect.
+              hello, I&apos;d love to connect.
             </motion.p>
           </div>
 
@@ -214,6 +207,8 @@ export default function Contact() {
                 </button>
               </div>
 
+              <p role="status" className="text-xs text-text-secondary">{copyStatus}</p>
+
               {/* Location & Socials */}
               <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -265,7 +260,7 @@ export default function Contact() {
               >
                 <div className="flex items-center gap-2 mb-6 text-sm font-semibold text-white">
                   <MessageSquare className="w-4 h-4 text-accent" />
-                  <span>Send a Direct Message</span>
+                  <span>Prepare an Email</span>
                 </div>
 
                 {/* Role Interest Selector */}
@@ -340,26 +335,17 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
                   className="w-full py-3.5 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-accent via-sky-400 to-accent-hover hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
                 >
-                  {isSubmitting ? (
-                    <span className="font-mono text-xs">Opening email client...</span>
-                  ) : isSent ? (
                     <>
-                      <Check className="w-4 h-4 text-slate-950" />
-                      <span>Message Drafted!</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Send Direct Message</span>
+                      <span>Open Email Draft</span>
                       <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
-                  )}
                 </button>
 
                 <p className="text-[11px] font-mono text-text-muted text-center mt-4">
-                  Opens directly in your default email client. References and CV available on request.
+                  Opens a draft in your email app; send it there to deliver your message.
+                  If no app opens, email nethsalee@gmail.com directly using your preferred email service.
                 </p>
               </form>
             </motion.div>
