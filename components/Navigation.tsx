@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-const links = [["About", "about"], ["Work", "project"], ["Skills", "skills"], ["Education", "education"]];
+const links = [["About", "about"], ["Work", "project"], ["Skills", "skills"]];
 export default function Navigation() {
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState("home");
     useEffect(() => {
-      const sections = ["home", "about", "project", "skills", "education", "contact"];
+      const sections = ["home", "about", "project", "skills", "contact"];
       const observer = new IntersectionObserver(entries => {
         for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
       }, { rootMargin: "-15% 0px -60% 0px", threshold: 0 });
