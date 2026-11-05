@@ -6,20 +6,4 @@ import Project from "@/components/Project";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-background text-text-primary selection:bg-accent/30 selection:text-white relative selection:text-accent">
-      <Navigation />
-      <main className="relative overflow-hidden">
-        <Hero />
-        <About />
-        <Education />
-        <Project />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-  );
-}
+export default function Home() { return <><Navigation /><main id="main-content" className="page-shell"><Hero /><About /><Project /><Skills /><Education /><Contact /></main><Footer /></>; }
