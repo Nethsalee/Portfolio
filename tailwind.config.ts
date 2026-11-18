@@ -12,7 +12,7 @@ export default {
         muted: "rgb(var(--muted) / <alpha-value>)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Arial", "sans-serif"],
         body: ["var(--font-body)", "Arial", "sans-serif"],
       },
     },

@@ -21,7 +21,7 @@ npm run build
 npm start
 ```
 
-The production build fetches Fraunces and DM Sans from Google Fonts through
+The production build fetches Space Grotesk and DM Sans from Google Fonts through
 `next/font/google`. Next.js self-hosts them after the build. An internet connection
 is needed for the first build.
 

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import { content } from "@/content";
 import { MotionProvider } from "@/components/Reveal";
 import "./globals.css";
 
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = DM_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
