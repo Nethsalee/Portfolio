@@ -11,7 +11,7 @@ export const content = {
     location: "Sri Lanka",
     email: "nethsalee@gmail.com",
     // Add a local /images/... path or a configured image URL.
-    portrait: null as string | null,
+    portrait: "/images/nethsalee-portrait-dark.png" as string | null,
     portraitAlt: "Portrait of Nethsalee Samarawickrama",
   },
   metadata: {

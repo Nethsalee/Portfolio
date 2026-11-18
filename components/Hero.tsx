@@ -32,22 +32,24 @@ export default function Hero() {
           <MotionPanel className="hero-visual-stage" depth={24}>
           <figure className={`portrait-panel ${person.portrait ? "has-portrait" : ""}`}>
             <div className="portrait-image">
-              {person.portrait ? (
-                <Image
-                  src={person.portrait}
-                  alt={person.portraitAlt}
-                  fill
-                  sizes="(max-width: 760px) 100vw, 42vw"
-                  preload
-                  className="portrait-photo"
-                />
-              ) : (
-                <div className="portrait-monogram" aria-hidden="true">
-                  <div className="portrait-ring ring-one" />
-                  <div className="portrait-ring ring-two" />
-                  <span>{person.initials}<i>.</i></span>
-                </div>
-              )}
+              <div className="portrait-monogram">
+                <div className="portrait-ring ring-one" aria-hidden="true" />
+                <div className="portrait-ring ring-two" aria-hidden="true" />
+                {person.portrait ? (
+                  <div className="portrait-circle">
+                    <Image
+                      src={person.portrait}
+                      alt={person.portraitAlt}
+                      fill
+                      sizes="(max-width: 650px) 215px, (max-width: 760px) 245px, (max-width: 900px) 190px, (max-width: 1100px) 215px, 250px"
+                      preload
+                      className="portrait-photo"
+                    />
+                  </div>
+                ) : (
+                  <span aria-hidden="true">{person.initials}<i>.</i></span>
+                )}
+              </div>
             </div>
             <figcaption>
               <span>{person.name}</span>
