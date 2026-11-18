@@ -495,7 +495,7 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 .button:hover > svg { transform: translateY(3px); }
 .contact-form .button:hover > svg { transform: translate(3px, -3px); }
 
-.skills-ribbon { position: relative; display: flex; align-items: center; width: calc(100vw - 64px); left: 50%; margin: 3px 0 45px; background: #222822; color: #f7f5e9; border-top: 1px solid #ffffff10; border-bottom: 1px solid #ffffff10; overflow: hidden; transform: translateX(-50%) rotate(-.35deg); padding-inline: clamp(20px, 4vw, 72px); }
+.skills-ribbon { position: relative; display: flex; align-items: center; width: calc(100vw - 112px); left: 50%; margin: 3px 0 45px; background: #222822; color: #f7f5e9; border-top: 1px solid #ffffff10; border-bottom: 1px solid #ffffff10; overflow: hidden; transform: translateX(-50%) rotate(-.35deg); padding-inline: clamp(20px, 4vw, 72px); }
 .ribbon-window { flex: 1; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .ribbon-track { display: flex; width: max-content; animation: ribbon-travel 55s linear infinite; }
 .ribbon-track ul { display: flex; flex-shrink: 0; list-style: none; margin: 0; padding: 23px 0; }
@@ -601,7 +601,7 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
   .portrait-image { height: 300px; }
   .hero-visual-stage { margin-top: 5px; }
   .hero-main { gap: 38px; }
-  .skills-ribbon { width: calc(100vw - 32px); margin-inline: 0; margin-bottom: 25px; }
+  .skills-ribbon { width: calc(100vw - 48px); margin-inline: 0; margin-bottom: 25px; }
   .ribbon-track ul { padding-block: 18px; }
   .ribbon-track li { gap: 25px; padding-right: 25px; }
   .ribbon-track .ribbon-word { font-size: 23px; }
