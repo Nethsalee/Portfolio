@@ -29,8 +29,6 @@ export const content = {
       { label: "About", id: "about" },
       { label: "Projects", id: "projects" },
       { label: "Skills", id: "skills" },
-      { label: "Education", id: "education" },
-      { label: "Community", id: "community" },
       { label: "Courses", id: "certifications" },
       { label: "Contact", id: "contact" },
     ],
