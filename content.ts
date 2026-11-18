@@ -23,8 +23,6 @@ export const content = {
     home: "Go to the beginning",
     open: "Open navigation",
     close: "Close navigation",
-    light: "Switch to light mode",
-    dark: "Switch to dark mode",
     items: [
       { label: "About", id: "about" },
       { label: "Projects", id: "projects" },

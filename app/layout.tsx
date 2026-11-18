@@ -18,13 +18,9 @@ export const metadata: Metadata = {
   },
 };
 
-// Set the saved/system theme before first paint. Storage failure falls back to the system setting.
-const themeScript = `(()=>{let t;try{t=localStorage.getItem('portfolio-theme')}catch{}document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'})()`;
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable}`}>
-      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
+    <html lang="en" data-theme="dark" className={`${display.variable} ${body.variable}`}>
       <body><a className="skip-link" href="#main-content">{content.footer.skip}</a>
         <MotionProvider>{children}</MotionProvider>
       </body>

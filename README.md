@@ -32,14 +32,13 @@ content.ts                        All portfolio copy, navigation and links
 app/
   page.tsx                        Sections in the requested order
   layout.tsx                      Fonts, metadata and initial theme
-  globals.css                     Light/dark tokens, responsive layouts, motion
+  globals.css                     Dark palette tokens, responsive layouts, motion
 components/
   AnimatedName.tsx                Staggered, accessible name reveal
   MotionPanel.tsx                 Reduced-motion-aware tilt and scroll drift
   Atmosphere.tsx                  Reading progress and desktop pointer glow
   SkillsRibbon.tsx                Pausable moving skills ribbon
   Navigation.tsx                  Floating, direction-aware pill and mobile menu
-  ThemeToggle.tsx                 Saved preference and system theme support
   Hero.tsx                        Name, introduction, CTAs and abstract paper study
   About.tsx                       First-person profile and highlights
   Project.tsx                     Two case studies and contributions
@@ -61,7 +60,7 @@ Every listed component contains its complete implementation in this project.
 
 Change `content.ts` to update text, skills, projects and contact details. Array
 order controls the corresponding cards and timeline entries. Colours live in
-the light/dark CSS variables at the top of `app/globals.css`.
+the dark-theme CSS variables at the top of `app/globals.css`.
 
 GitHub, LinkedIn and project links are intentionally `null`. They display
 “Link to be added” without pretending to be working links. Replace `null`
@@ -102,10 +101,10 @@ use the visible email address directly.
 ## Accessibility and interactions
 
 - Semantic headings, sections, lists, labels, a skip link, and visible focus.
-- System preference and persistent light/dark toggle, including storage failures.
+- Fixed dark theme, independent of saved browser or system preferences.
 - Navigation shrinks on scroll, tracks sections, slides its active indicator,
   hides when moving down and returns when moving up or receiving keyboard focus.
-- Mobile navigation provides a floating menu/theme control and closes on Escape
+- Mobile navigation provides a floating menu control and closes on Escape
   or section selection.
 - Reduced motion disables scroll smoothing, floating animation, magnetic motion,
   and reveal translation. Touch interaction does not trigger magnetic movement.

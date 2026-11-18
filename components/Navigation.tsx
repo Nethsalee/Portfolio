@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { content } from "@/content";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -69,7 +68,6 @@ export default function Navigation() {
           ))}
         </div>
         <div className="nav-controls">
-          <ThemeToggle />
           <button type="button" ref={toggle} className="icon-button menu-toggle"
             aria-label={open ? nav.close : nav.open} aria-expanded={open}
             aria-controls="mobile-navigation" onClick={toggleMenu}>
