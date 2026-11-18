@@ -154,8 +154,8 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 27px; margin-top: 29px; }
 .hero-location { display: flex; align-items: center; gap: 8px; color: rgb(var(--muted)); font-size: 10px; margin-top: 32px; }
 .hero-location > span { width: 5px; height: 5px; border-radius: 50%; background: rgb(var(--accent)); }
-.portrait-panel { position: relative; margin: 0; min-width: 0; background: #262b29; border-radius: 190px 190px 18px 18px; padding: 11px; color: #f8f5eb; transform: rotate(2deg); box-shadow: 15px 24px 0 var(--accent-soft); transition: transform .4s; }
-.portrait-panel:hover { transform: rotate(0); }
+.portrait-panel { position: relative; margin: 0; min-width: 0; background: #262b29; border-radius: 190px 190px 18px 18px; padding: 11px; color: #f8f5eb; transform: rotate(0deg); box-shadow: 15px 24px 0 var(--accent-soft); transition: transform .4s; }
+.portrait-panel:hover { transform: rotate(0deg); }
 .portrait-image { position: relative; height: 370px; overflow: hidden; border-radius: 180px 180px 8px 8px; }
 .portrait-photo { object-fit: cover; object-position: center 30%; }
 .portrait-monogram { display: flex; align-items: center; justify-content: center; height: 100%; position: relative; isolation: isolate; overflow: hidden; }
@@ -474,8 +474,8 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 .hero-visual-stage::before { content: ""; position: absolute; width: 125%; height: 90%; left: -10%; top: 1%; background: repeating-conic-gradient(from 15deg, transparent 0deg 18deg, #a9552822 19deg 20deg, transparent 21deg 30deg); border-radius: 50%; mask-image: radial-gradient(ellipse, transparent 40%, #000 42%, transparent 71%); animation: orbit-drift 70s linear infinite; pointer-events: none; }
 .motion-panel { perspective: 1100px; min-width: 0; }
 .motion-panel-inner { position: relative; transform-style: preserve-3d; }
-.portrait-panel { border-radius: 30px; transform: rotate(4deg); box-shadow: 19px 22px 0 var(--accent-soft), 0 25px 65px #1e211b20; }
-.portrait-panel:hover { transform: rotate(1deg); }
+.portrait-panel { border-radius: 30px; transform: rotate(0deg); box-shadow: 19px 22px 0 var(--accent-soft), 0 25px 65px #1e211b20; }
+.portrait-panel:hover { transform: rotate(0deg); }
 .portrait-image { border-radius: 22px; height: 390px; }
 .portrait-monogram { background: radial-gradient(ellipse at 60% 10%, #49503d, transparent 70%), #252a25; }
 .portrait-monogram::before { background: linear-gradient(145deg, #ffa773, #e65d34); border-radius: 46% 54% 45% 55%; animation: organic-orbit 14s ease-in-out infinite alternate; box-shadow: inset 14px -15px 40px #6622181c, 0 18px 60px #0002; }
@@ -616,7 +616,7 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 }
 @media (hover: none), (pointer: coarse) {
   .pointer-glow { display: none; }
-  .portrait-panel:hover { transform: rotate(4deg); }
+  .portrait-panel:hover { transform: rotate(0deg); }
   .skill-card:hover, .community-card:hover, .highlight-card:hover { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -652,3 +652,8 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 @media (max-width: 900px) { .portrait-monogram { --portrait-diameter: 190px; } }
 @media (max-width: 760px) { .portrait-monogram { --portrait-diameter: 245px; } }
 @media (max-width: 650px) { .portrait-monogram { --portrait-diameter: 215px; } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portrait-panel:hover { transform: rotate(4deg); }
+}
+
+.hero-visual-stage.orbital-stage::before { display: none; }

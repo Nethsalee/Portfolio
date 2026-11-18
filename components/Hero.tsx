@@ -4,6 +4,7 @@ import { content } from "@/content";
 import MagneticLink from "./MagneticLink";
 import Reveal from "./Reveal";
 import AnimatedName from "./AnimatedName";
+import styles from "./HeroPortrait.module.css";
 import MotionPanel from "./MotionPanel";
 
 export default function Hero() {
@@ -29,35 +30,33 @@ export default function Hero() {
             <div className="hero-location"><span aria-hidden="true" />{hero.location}</div>
           </div>
 
-          <MotionPanel className="hero-visual-stage" depth={24}>
-          <figure className={`portrait-panel ${person.portrait ? "has-portrait" : ""}`}>
-            <div className="portrait-image">
-              <div className="portrait-monogram">
-                <div className="portrait-ring ring-one" aria-hidden="true" />
-                <div className="portrait-ring ring-two" aria-hidden="true" />
+          <MotionPanel className="hero-visual-stage orbital-stage" depth={24}>
+          <figure className={styles.portrait}>
+            <div className={styles.scene}>
+              <div className={styles.orbit} aria-hidden="true" />
+              <div className={`${styles.orbit} ${styles.secondOrbit}`} aria-hidden="true" />
+              <div className={styles.circle}>
                 {person.portrait ? (
-                  <div className="portrait-circle">
-                    <Image
-                      src={person.portrait}
-                      alt={person.portraitAlt}
-                      fill
-                      sizes="(max-width: 650px) 215px, (max-width: 760px) 245px, (max-width: 900px) 190px, (max-width: 1100px) 215px, 250px"
-                      preload
-                      className="portrait-photo"
-                    />
-                  </div>
+                  <Image
+                    src={person.portrait}
+                    alt={person.portraitAlt}
+                    fill
+                    sizes="(max-width: 760px) 280px, 295px"
+                    preload
+                    className={styles.photo}
+                  />
                 ) : (
-                  <span aria-hidden="true">{person.initials}<i>.</i></span>
+                  <span className={styles.initials} aria-hidden="true">{person.initials}.</span>
                 )}
               </div>
+              <a href="#projects" className={styles.arrow} aria-label={hero.projectsCta}>
+                <ArrowDown size={22} aria-hidden="true" />
+              </a>
             </div>
-            <figcaption>
+            <figcaption className={styles.caption}>
               <span>{person.name}</span>
               <span>{person.location}</span>
             </figcaption>
-            <a href="#projects" className="portrait-arrow" aria-label={hero.projectsCta}>
-              <ArrowDown size={25} aria-hidden="true" />
-            </a>
           </figure>
           </MotionPanel>
         </div>
