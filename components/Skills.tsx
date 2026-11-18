@@ -1,7 +1,26 @@
-const groups = [
-    { title: "Analysis & understanding", description: "Connecting needs with clear, practical solutions.", skills: ["Requirements documentation", "Systems analysis & design", "Process understanding", "Microsoft Excel", "Google Sheets"] },
-    { title: "Quality & detail", description: "Taking care of the details that make things work well.", skills: ["Postman & API testing", "UI review", "Problem solving", "Documentation", "Attention to detail"] },
-    { title: "Planning & collaboration", description: "Keeping work organised and people connected.", skills: ["Agile & Scrum", "Jira & Trello", "Sprint planning", "Team communication", "Git & GitHub"] },
-    { title: "Technology & tools", description: "A hands-on foundation for building digital experiences.", skills: ["React & JavaScript", "Node.js & Express", "MySQL & MongoDB", "HTML & CSS", "Figma"] },
-];
-export default function Skills() { return <section id="skills" className="section"><div className="section-heading"><span className="eyebrow">03 / WHAT I BRING</span><h2>A connected set of skills.</h2></div><div className="skills-grid">{groups.map(group => <article key={group.title}><h3>{group.title}</h3><p>{group.description}</p><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>; }
+import { Braces, PanelsTopLeft, Database, Wrench, NotebookPen } from "lucide-react";
+import { content } from "@/content";
+import Reveal from "./Reveal";
+
+const icons = [Braces, PanelsTopLeft, Database, Wrench, NotebookPen];
+
+export default function Skills() {
+  const { skills } = content;
+  return (
+    <section id="skills" className="section">
+      <Reveal>
+        <div className="section-heading"><p className="eyebrow">{skills.label}</p><h2>{skills.title}</h2></div>
+        <div className="skills-bento">
+          {skills.groups.map((group, index) => {
+            const Icon = icons[index];
+            return <article key={group.title} className={`skill-card skill-card-${index}`}>
+              <Icon size={23} strokeWidth={1.5} aria-hidden="true" /><h3>{group.title}</h3>
+              <ul className="tag-list">{group.items.map(item => <li key={item}>{item}</li>)}</ul>
+            </article>;
+          })}
+        </div>
+        <div className="soft-skills"><h3>{skills.softTitle}</h3><ul>{skills.soft.map(item => <li key={item}>{item}</li>)}</ul></div>
+      </Reveal>
+    </section>
+  );
+}

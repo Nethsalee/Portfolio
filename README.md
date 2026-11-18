@@ -1,110 +1,124 @@
-# Nethsalee Samarawickrama - Portfolio
+# Nethsalee Samarawickrama — Portfolio
 
-A modern, distinctive one-page portfolio website built with Next.js 14+, TypeScript, Tailwind CSS, and Framer Motion.
+A complete single-page portfolio using Next.js 16 App Router, React, TypeScript,
+Tailwind CSS, and Framer Motion. The latest supplied brief is the content source.
+Education is included as requested in that brief.
 
-## 🚀 Tech Stack
+## Run locally
 
-- **Framework**: Next.js 14+ (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom theme
-- **Animation**: Framer Motion
-- **Icons**: Lucide React
-- **Fonts**: Space Grotesk (display) & Inter (body) via next/font/google
-
-## 📦 Installation & Setup
-
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Open your browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 🛠️ Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-
-## 🎨 Features
-
-- **Asymmetric Layout**: Non-templated design with intentional layout decisions
-- **Dark Mode First**: Custom color palette optimized for dark backgrounds
-- **Scroll Animations**: Smooth reveal animations using Framer Motion
-- **Typewriter Effect**: Dynamic role cycling in the hero section
-- **Responsive Design**: Fully responsive across mobile, tablet, and desktop
-- **Sticky Navigation**: Active section indicator with smooth scrolling
-- **Contact Form**: Client-side form with mailto integration
-- **Performance Optimized**: Next.js 14 with App Router for optimal performance
-
-## 📁 Project Structure
-
-```
-MyPort/
-├── app/
-│   ├── layout.tsx       # Root layout with font configuration
-│   ├── page.tsx         # Main page composition
-│   └── globals.css      # Global styles and Tailwind imports
-├── components/
-│   ├── Navigation.tsx   # Sticky navigation with scroll spy
-│   ├── Hero.tsx         # Hero section with typewriter effect
-│   ├── About.tsx        # About section
-│   ├── Education.tsx    # Timeline-based education section
-│   ├── Project.tsx      # Featured project showcase
-│   ├── Skills.tsx       # Skills constellation layout
-│   ├── Contact.tsx      # Contact form and details
-│   └── Footer.tsx       # Footer component
-├── public/              # Static assets
-├── tailwind.config.ts   # Tailwind configuration with custom theme
-├── tsconfig.json        # TypeScript configuration
-└── next.config.ts       # Next.js configuration
-```
-
-## 🎨 Color Palette
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| background | #0F172A | Main background |
-| surface | #1E293B | Secondary background |
-| accent | #3B82F6 | Primary accent color |
-| accent-hover | #60A5FA | Hover state |
-| text-primary | #F8FAFC | Primary text |
-| text-secondary | #94A3B8 | Secondary text |
-| border-subtle | #334155 | Borders |
-
-## 📝 Customization
-
-To customize the portfolio for your own use:
-
-1. Update personal information in `components/Hero.tsx`
-2. Modify the about section in `components/About.tsx`
-3. Update education history in `components/Education.tsx`
-4. Replace project details in `components/Project.tsx`
-5. Update skills in `components/Skills.tsx`
-6. Change contact information in `components/Contact.tsx`
-7. Update metadata in `app/layout.tsx`
-
-## 🌐 Deployment
-
-Deploy easily to Vercel:
+Use Node.js 20.9 or later.
 
 ```bash
+npm ci
+npm run dev
+```
+
+Open http://localhost:3000.
+
+```bash
+npm run lint
 npm run build
+npm start
 ```
 
-Or use Vercel CLI:
+The production build fetches Fraunces and DM Sans from Google Fonts through
+`next/font/google`. Next.js self-hosts them after the build. An internet connection
+is needed for the first build.
 
-```bash
-vercel
+## Files
+
+```text
+content.ts                        All portfolio copy, navigation and links
+app/
+  page.tsx                        Sections in the requested order
+  layout.tsx                      Fonts, metadata and initial theme
+  globals.css                     Light/dark tokens, responsive layouts, motion
+components/
+  AnimatedName.tsx                Staggered, accessible name reveal
+  MotionPanel.tsx                 Reduced-motion-aware tilt and scroll drift
+  Atmosphere.tsx                  Reading progress and desktop pointer glow
+  SkillsRibbon.tsx                Pausable moving skills ribbon
+  Navigation.tsx                  Floating, direction-aware pill and mobile menu
+  ThemeToggle.tsx                 Saved preference and system theme support
+  Hero.tsx                        Name, introduction, CTAs and abstract paper study
+  About.tsx                       First-person profile and highlights
+  Project.tsx                     Two case studies and contributions
+  Skills.tsx                      Technical bento grid and soft skills
+  Education.tsx                   Education timeline
+  Community.tsx                   Leadership and volunteering
+  Certifications.tsx              Certifications and courses
+  Contact.tsx                     Front-end form and email copy feedback
+  Footer.tsx                      Back-to-top link
+  Reveal.tsx                      Reduced-motion-aware Framer Motion reveals
+  MagneticLink.tsx                Desktop pointer micro-interaction
+  PortfolioLink.tsx               Real links or explicit missing-link placeholders
+tailwind.config.ts                Shared colour and font tokens
 ```
 
-## 📄 License
+Every listed component contains its complete implementation in this project.
 
-All rights reserved © 2026 Nethsalee Samarawickrama
+## Editing
+
+Change `content.ts` to update text, skills, projects and contact details. Array
+order controls the corresponding cards and timeline entries. Colours live in
+the light/dark CSS variables at the top of `app/globals.css`.
+
+GitHub, LinkedIn and project links are intentionally `null`. They display
+“Link to be added” without pretending to be working links. Replace `null`
+with a full `https://...` URL to activate a link.
+
+The course entries have no dates or invented credential links. Leadership
+activity names are retained from the supplied content. No phone or referee
+details are included.
+
+
+### Adding your images
+
+The latest design includes a large portrait panel and project screenshot frames.
+No portrait or screenshots were available in the workspace, so they currently
+show decorative monograms instead.
+
+Save your real images in public/images/ and update these fields in content.ts:
+
+- person.portrait with /images/portrait.jpg
+- person.portraitAlt with a description of your photo
+- projects.items[0].image with /images/educonnect.png
+- projects.items[0].imageAlt with a description of that screenshot
+- projects.items[1].image with /images/solea.png
+- projects.items[1].imageAlt with a description of that screenshot
+
+Local images use Next.js image optimisation. Screenshots retain their aspect
+ratio and render inside a browser frame. A portrait fills its panel with a crop,
+so choose a photo with space around your face. Change object-position in
+.portrait-photo if you want to adjust the crop.
+
+## Form behaviour
+
+The front-end form uses native required/email validation and opens an encoded
+email draft. The visitor reviews and sends that draft in their email application.
+It does not report a delivered message. If no application opens, visitors can
+use the visible email address directly.
+
+## Accessibility and interactions
+
+- Semantic headings, sections, lists, labels, a skip link, and visible focus.
+- System preference and persistent light/dark toggle, including storage failures.
+- Navigation shrinks on scroll, tracks sections, slides its active indicator,
+  hides when moving down and returns when moving up or receiving keyboard focus.
+- Mobile navigation provides a floating menu/theme control and closes on Escape
+  or section selection.
+- Reduced motion disables scroll smoothing, floating animation, magnetic motion,
+  and reveal translation. Touch interaction does not trigger magnetic movement.
+- Abstract project art is decorative, not a screenshot or claim about a UI.
+
+## Verification
+
+ESLint and the production build pass. The build includes TypeScript checking.
+The browser automation runtime currently fails to start in this environment,
+so visual browser and responsive interaction verification remains uncompleted.
+
+## Optional improvements
+
+1. Add genuine project screenshots to the case-study covers.
+2. Add a downloadable CV when the final PDF is ready.
+3. Add a social preview image for shared portfolio links.

@@ -1,18 +1,73 @@
 "use client";
+
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Copy, Check } from "lucide-react";
+import { content } from "@/content";
+import Reveal from "./Reveal";
+import PortfolioLink from "./PortfolioLink";
+
 export default function Contact() {
-    const [status, setStatus] = useState("");
-    const [copied, setCopied] = useState(false);
-    async function copyEmail() { setCopied(false); try {
-        await navigator.clipboard.writeText("nethsalee@gmail.com");
-        setCopied(true);
-        setStatus("Email address copied.");
+  const { contact, person } = content;
+  const [copyStatus, setCopyStatus] = useState("");
+  const [draftStatus, setDraftStatus] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  async function copyEmail() {
+    setCopied(false);
+    try {
+      await navigator.clipboard.writeText(person.email);
+      setCopied(true);
+      setCopyStatus(contact.copied);
+    } catch {
+      setCopyStatus(contact.copyFailed);
     }
-    catch {
-        setStatus("Copy failed. Please select and copy the email address manually.");
-    } }
-    function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); const data = new FormData(e.currentTarget); const subject = "Portfolio inquiry from " + String(data.get("name")); const body = String(data.get("message")) + "\r\n\r\nFrom: " + String(data.get("name")) + "\r\nEmail: " + String(data.get("email")); window.location.href = "mailto:nethsalee@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body); }
-    return <section id="contact" className="section contact-section"><div className="contact-grid"><div><span className="eyebrow">04 / GET IN TOUCH</span><h2>Good things start<br />with a conversation.</h2><p>Have an opportunity, an idea, or a question? I’d love to hear from you.</p><div className="email-line"><a href="mailto:nethsalee@gmail.com">nethsalee@gmail.com</a><button type="button" onClick={copyEmail} aria-label="Copy email address">{copied ? <Check size={17}/> : <Copy size={17}/>}</button></div><p className="copy-status" role="status">{status}</p><div className="contact-links"><a href="tel:+94719002919">+94 71 900 2919</a><a href="https://linkedin.com/in/nethsalee" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={14}/></a><a href="https://github.com/nethsalee" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={14}/></a></div></div>
- <form onSubmit={submit} className="contact-form"><div className="form-pair"><label>Your name<input name="name" autoComplete="name" required placeholder="Jane Doe"/></label><label>Email address<input name="email" type="email" autoComplete="email" required placeholder="jane@example.com"/></label></div><label>Your message<textarea name="message" required rows={4} placeholder="Tell me what you have in mind…"/></label><button type="submit" className="button primary">Open email draft <ArrowUpRight size={16}/></button><p className="form-note">Opens your email app. Send the draft there to deliver your message. If no app opens, use the email address alongside.</p></form></div></section>;
+  }
+
+  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = `${contact.subjectPrefix} ${String(data.get("name")).trim()}`;
+    const body = [
+      String(data.get("message")).trim(),
+      "",
+      `${contact.nameLabel}: ${String(data.get("name")).trim()}`,
+      `${contact.emailLabel}: ${String(data.get("email")).trim()}`,
+    ].join("\r\n");
+    window.location.href = `mailto:${person.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setDraftStatus(contact.feedback);
+  }
+
+  return (
+    <section id="contact" className="section contact-section">
+      <Reveal className="contact-grid">
+        <div className="contact-copy">
+          <p className="eyebrow">{contact.label}</p><h2>{contact.title}</h2><p>{contact.intro}</p>
+          <div className="email-line"><a href={`mailto:${person.email}`}>{person.email}</a>
+            <button type="button" className="icon-button" onClick={copyEmail} aria-label={contact.copy}>
+              {copied ? <Check size={18} /> : <Copy size={18} />}
+            </button>
+          </div>
+          <p role="status" className="status-message">{copyStatus}</p>
+          <div className="contact-socials">{contact.links.map(link =>
+            <PortfolioLink key={link.label} link={link} placeholder={contact.placeholder} />)}</div>
+        </div>
+        <form onSubmit={prepareEmail} className="contact-form">
+          <div className="form-pair">
+            <label htmlFor="contact-name">{contact.nameLabel}
+              <input id="contact-name" name="name" autoComplete="name" required maxLength={150} placeholder={contact.namePlaceholder} />
+            </label>
+            <label htmlFor="contact-email">{contact.emailLabel}
+              <input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} placeholder={contact.emailPlaceholder} />
+            </label>
+          </div>
+          <label htmlFor="contact-message">{contact.messageLabel}
+            <textarea id="contact-message" name="message" required rows={4} maxLength={4000} placeholder={contact.messagePlaceholder} />
+          </label>
+          <button type="submit" className="button primary">{contact.submit}<ArrowUpRight size={17} /></button>
+          <p className="form-note">{contact.note}</p>
+          <p role="status" className="status-message">{draftStatus}</p>
+        </form>
+      </Reveal>
+    </section>
+  );
 }

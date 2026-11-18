@@ -1,9 +1,77 @@
-import { ArrowDown, ArrowUpRight, Sparkles, ScanLine, Layers3, Braces, Compass } from "lucide-react";
+import Image from "next/image";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { content } from "@/content";
+import MagneticLink from "./MagneticLink";
+import Reveal from "./Reveal";
+import AnimatedName from "./AnimatedName";
+import MotionPanel from "./MotionPanel";
+
 export default function Hero() {
-  return <section className="hero" id="home">
-    <div className="hero-top"><span className="eyebrow">A CURIOUS MIND. A PRACTICAL APPROACH.</span><span className="availability"><span /> Open to opportunities</span></div>
-    <div className="hero-grid"><div className="hero-content"><div className="intro-line"><span className="intro-dash"/> Hello, I’m Nethsalee</div><h1>Big picture.<br/><span className="hero-serif">Small details.</span><br/><span className="hero-outline">Real impact.</span></h1><p className="hero-description">Connecting people, processes, and technology. I’m an Information Systems undergraduate who loves understanding problems and bringing better ideas to life.</p><div className="hero-actions"><a className="button primary" href="#project">Discover my work <ArrowUpRight size={18}/></a><a className="hero-secondary" href="#about">A little about me <ArrowDown size={16}/></a></div></div>
-    <div className="hero-visual" aria-label="An illustration connecting understanding, quality, planning, and building"><div className="visual-grid"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbital-core"><span className="core-spark"><Sparkles size={35} strokeWidth={1.2}/></span><span className="core-monogram">ns<span>.</span></span><span className="core-caption">ALWAYS EXPLORING</span></div><div className="floating-note note-understand"><Compass size={20}/><div><span>START WITH WHY</span><strong>Understand.</strong></div></div><div className="floating-note note-quality"><ScanLine size={20}/><div><span>CARE IN EVERY DETAIL</span><strong>Make it better.</strong></div></div><div className="floating-note note-plan"><Layers3 size={20}/><div><span>CONNECT THE DOTS</span><strong>Bring it together.</strong></div></div><div className="floating-note note-build"><Braces size={20}/><div><span>TURN IDEAS INTO ACTION</span><strong>Build something.</strong></div></div><span className="visual-coordinate coordinate-top">IDEAS → POSSIBILITIES</span><span className="visual-coordinate coordinate-bottom">CURIOUS BY NATURE <span>✳</span></span></div></div>
-    <div className="hero-caption"><span><span className="caption-dot"/> BASED IN SRI LANKA · OPEN TO NEW POSSIBILITIES</span><a href="#project">SCROLL TO EXPLORE <ArrowDown size={14}/></a></div>
-  </section>;
+  const { hero, person } = content;
+
+  return (
+    <section id="home" className="hero">
+      <Reveal>
+        <div className="hero-main">
+          <div className="hero-copy">
+            <p className="hero-tagline">{hero.tagline}</p>
+            <AnimatedName />
+            <p className="hero-statement">{hero.statement}</p>
+            <p className="hero-description">{hero.description}</p>
+            <div className="hero-actions">
+              <MagneticLink href="#projects" className="button primary">
+                {hero.projectsCta}<ArrowDown size={17} aria-hidden="true" />
+              </MagneticLink>
+              <a href="#contact" className="text-link">
+                {hero.contactCta}<ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+            <div className="hero-location"><span aria-hidden="true" />{hero.location}</div>
+          </div>
+
+          <MotionPanel className="hero-visual-stage" depth={24}>
+          <figure className={`portrait-panel ${person.portrait ? "has-portrait" : ""}`}>
+            <div className="portrait-image">
+              {person.portrait ? (
+                <Image
+                  src={person.portrait}
+                  alt={person.portraitAlt}
+                  fill
+                  sizes="(max-width: 760px) 100vw, 42vw"
+                  preload
+                  className="portrait-photo"
+                />
+              ) : (
+                <div className="portrait-monogram" aria-hidden="true">
+                  <div className="portrait-ring ring-one" />
+                  <div className="portrait-ring ring-two" />
+                  <span>{person.initials}<i>.</i></span>
+                </div>
+              )}
+            </div>
+            <figcaption>
+              <span>{person.name}</span>
+              <span>{person.location}</span>
+            </figcaption>
+            <a href="#projects" className="portrait-arrow" aria-label={hero.projectsCta}>
+              <ArrowDown size={25} aria-hidden="true" />
+            </a>
+          </figure>
+          </MotionPanel>
+        </div>
+
+        <div className="hero-bottom">
+          <ul className="hero-focus" aria-label={hero.visualLabel}>
+            {hero.process.map(step => <li key={step}>{step}</li>)}
+          </ul>
+          <a href="#solea" className="current-project">
+            <span className="status-dot" aria-hidden="true" />
+            <span><small>{hero.currentLabel}</small><strong>{hero.currentProject}</strong></span>
+            <ArrowUpRight size={19} aria-hidden="true" />
+            <span className="sr-only">{hero.currentLink}</span>
+          </a>
+        </div>
+      </Reveal>
+    </section>
+  );
 }
