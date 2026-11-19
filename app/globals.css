@@ -458,7 +458,7 @@ h3 { font-size: 20px; letter-spacing: -.5px; font-weight: 550; line-height: 1.4;
 .reading-progress { position: absolute; inset: 0 0 auto; height: 3px; background: #ef7448; transform-origin: left; }
 .pointer-glow { position: absolute; top: 0; left: 0; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, #f48d5c0c, transparent 68%); }
 .hero { position: relative; padding-top: 165px; }
-.hero::before { content: ""; position: absolute; top: 55px; right: -35px; width: 55%; height: 530px; background: radial-gradient(ellipse at 65% 45%, #ed9b6b20, transparent 65%); pointer-events: none; z-index: -1; }
+.hero::before { content: ""; position: absolute; top: 55px; right: -35px; width: 55%; height: 530px; background: radial-gradient(ellipse 34% 36% at 65% 45%, #ed9b6b20, transparent); pointer-events: none; z-index: -1; }
 .hero-main { gap: 48px; }
 .hero-tagline { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 1.6px; }
 .hero-tagline::before { content: ""; width: 23px; height: 1px; background: rgb(var(--accent)); }
