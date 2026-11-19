@@ -75,7 +75,6 @@ export const content = {
         id: "educonnect",
         title: "EduConnect",
         monogram: "ec",
-        preview: null,
         screenshot: {
           src: "/images/educonnect-homepage.png",
           width: 1637,
@@ -97,12 +96,6 @@ export const content = {
         id: "solea",
         title: "SOLEA",
         monogram: "s.",
-        preview: {
-          src: "/images/solea-portfolio-preview.png",
-          width: 1774,
-          height: 887,
-          alt: "Oxblood sneaker with a sculpted cream sole on a limestone plinth",
-        },
         screenshot: {
           src: "/images/solea-homepage.png",
           width: 1677,

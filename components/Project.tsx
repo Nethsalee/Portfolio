@@ -15,10 +15,7 @@ export default function Project() {
         <p>{projects.intro}</p>
       </div>
       <div className="project-list">
-        {projects.items.map(project => {
-          const preview = project.preview ?? project.screenshot;
-
-          return (
+        {projects.items.map(project => (
           <Reveal key={project.id}>
             <MotionPanel depth={12}>
             <article className={`case-card case-${project.id}`} id={project.id}>
@@ -32,9 +29,9 @@ export default function Project() {
                     </a>
                   ) : <ArrowUpRight size={23} aria-hidden="true" />}
                 </div>
-                {preview ? (
-                  <Image src={preview.src} alt={preview.alt}
-                    width={preview.width} height={preview.height} className="project-cover-screenshot"
+                {project.screenshot ? (
+                  <Image src={project.screenshot.src} alt={project.screenshot.alt}
+                    width={project.screenshot.width} height={project.screenshot.height} className="project-cover-screenshot"
                     sizes="(max-width: 515px) calc(64vw - 20px), (max-width: 760px) 330px, (max-width: 1276px) 40vw, 470px" />
                 ) : (
                   <div className="project-cover-art" aria-hidden="true">
@@ -65,8 +62,7 @@ export default function Project() {
             </article>
             </MotionPanel>
           </Reveal>
-          );
-        })}
+        ))}
       </div>
     </section>
   );
