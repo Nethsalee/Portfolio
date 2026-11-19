@@ -90,7 +90,10 @@ export const content = {
           "Contributing to project planning, task coordination, API documentation, merge conflict resolution, and team code reviews.",
         ],
         tags: ["React", "Node.js", "Express", "MySQL", "JWT"],
-        links: [{ label: "GitHub", href: null }, { label: "Live project", href: null }] as PortfolioLink[],
+        links: [
+          { label: "GitHub", href: "https://github.com/kawshalya-k/EduConnect" },
+          // { label: "Live project", href: null },
+        ] as PortfolioLink[],
       },
       {
         id: "solea",
@@ -111,7 +114,10 @@ export const content = {
           "Implementing server-side rendering, dynamic routing, and optimised image handling to support performance and usability.",
         ],
         tags: ["Next.js", "React", "Tailwind CSS"],
-        links: [{ label: "GitHub", href: null }, { label: "Live project", href: null }] as PortfolioLink[],
+        links: [
+          { label: "GitHub", href: "https://github.com/Nethsalee/Solea" },
+          // { label: "Live project", href: null },
+        ] as PortfolioLink[],
       },
     ],
   },
