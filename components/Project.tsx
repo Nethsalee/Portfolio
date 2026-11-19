@@ -15,21 +15,27 @@ export default function Project() {
         <p>{projects.intro}</p>
       </div>
       <div className="project-list">
-        {projects.items.map(project => (
+        {projects.items.map(project => {
+          const preview = project.preview ?? project.screenshot;
+
+          return (
           <Reveal key={project.id}>
             <MotionPanel depth={12}>
             <article className={`case-card case-${project.id}`} id={project.id}>
-              <div className={`project-cover ${project.image ? "has-screenshot" : ""}`}>
+              <div className="project-cover">
                 <div className="cover-topline">
                   <span className="project-category">{project.category}</span>
-                  <ArrowUpRight size={23} aria-hidden="true" />
+                  {project.screenshot ? (
+                    <a className="cover-screenshot-link" href={project.screenshot.src} target="_blank" rel="noopener noreferrer"
+                      aria-label={`View ${project.title} screenshot (opens in a new tab)`} title={`View ${project.title} screenshot`}>
+                      <ArrowUpRight size={23} aria-hidden="true" />
+                    </a>
+                  ) : <ArrowUpRight size={23} aria-hidden="true" />}
                 </div>
-                {project.image ? (
-                  <div className="screenshot-frame">
-                    <div className="browser-chrome" aria-hidden="true"><i /><i /><i /></div>
-                    <Image src={project.image} alt={project.imageAlt} width={1440} height={900}
-                      sizes="(max-width: 760px) 100vw, 85vw" className="project-screenshot" />
-                  </div>
+                {preview ? (
+                  <Image src={preview.src} alt={preview.alt}
+                    width={preview.width} height={preview.height} className="project-cover-screenshot"
+                    sizes="(max-width: 515px) calc(64vw - 20px), (max-width: 760px) 330px, (max-width: 1276px) 40vw, 470px" />
                 ) : (
                   <div className="project-cover-art" aria-hidden="true">
                     <span className="cover-initials">{project.monogram}</span>
@@ -59,7 +65,8 @@ export default function Project() {
             </article>
             </MotionPanel>
           </Reveal>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
