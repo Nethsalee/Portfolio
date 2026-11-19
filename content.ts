@@ -161,7 +161,10 @@ export const content = {
     label: "Let’s connect",
     title: "It starts with a hello.",
     intro: "Have an opportunity, a project, or a question? I’d be happy to hear from you.",
-    links: [{ label: "GitHub", href: null }, { label: "LinkedIn", href: null }] as PortfolioLink[],
+    links: [
+      { label: "GitHub", href: "https://github.com/Nethsalee" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/nethsalee-samarawickrama-83b825336" },
+    ] as PortfolioLink[],
     placeholder: "Link to be added",
     nameLabel: "Your name",
     namePlaceholder: "Jane Doe",
