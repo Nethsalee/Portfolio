@@ -41,7 +41,7 @@ export default function Hero() {
                     src={person.portrait}
                     alt={person.portraitAlt}
                     fill
-                    sizes="(max-width: 760px) 280px, 295px"
+                    sizes="(max-width: 444px) 63vw, (max-width: 760px) 280px, (max-width: 913px) 210px, (max-width: 1282px) 23vw, 295px"
                     preload
                     className={styles.photo}
                   />

@@ -110,11 +110,20 @@
   to { transform: translate(-50%, -50%) rotate(332deg); }
 }
 
+@media (max-width: 900px) {
+  .scene { overflow: clip; }
+}
 @media (max-width: 760px) {
-  .portrait { --diameter: clamp(225px, 65vw, 280px); }
-  .scene { height: calc(var(--diameter) + 90px); }
+  .portrait { --diameter: min(63vw, 280px); }
+  .scene { height: calc(var(--diameter) + 72px); }
+  .orbit { width: calc(var(--diameter) + 60px); }
+  .secondOrbit {
+    width: calc(var(--diameter) + 30px);
+    height: calc(var(--diameter) + 64px);
+  }
+  .initials { font-size: clamp(80px, 26vw, 125px); }
   .caption { padding-top: 8px; }
-  .arrow { bottom: 38px; }
+  .arrow { bottom: 26px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .orbit { animation: none; }
